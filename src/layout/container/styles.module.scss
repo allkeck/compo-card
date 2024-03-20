@@ -1,0 +1,8 @@
+@import '../../sass/_variables';
+
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding-left: $design-step-tall;
+  padding-right: $design-step-tall;
+}
