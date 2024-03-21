@@ -27,6 +27,6 @@
       "@components/*": ["src/components/*"]
     }
   },
-  "include": ["src", "types.d.ts", "swiper.d.ts"],
+  "include": ["./src", "./src/types/swiper.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

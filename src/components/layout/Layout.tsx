@@ -1,5 +1,5 @@
-import type { IWithChildrenProps } from '@/types/types';
+import { PropsWithChildren } from 'react';
 
-export const Layout = ({ children }: IWithChildrenProps) => {
+export const Layout = ({ children }: PropsWithChildren) => {
   return <main>{children}</main>;
 };

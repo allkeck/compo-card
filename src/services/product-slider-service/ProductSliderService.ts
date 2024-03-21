@@ -1,4 +1,4 @@
-import type { IProductSliderItem } from '@/types/types';
+import { IProductSliderItem, IProductSliderService } from './interface';
 
 const productSliderData: IProductSliderItem[] = [
   {
@@ -23,8 +23,8 @@ const productSliderData: IProductSliderItem[] = [
   },
 ];
 
-class ProductSliderController {
-  private sliders;
+class ProductSliderService implements IProductSliderService {
+  private sliders: IProductSliderItem[];
 
   constructor(data: IProductSliderItem[]) {
     this.sliders = data;
@@ -35,4 +35,4 @@ class ProductSliderController {
   }
 }
 
-export default new ProductSliderController(productSliderData);
+export default new ProductSliderService(productSliderData);
