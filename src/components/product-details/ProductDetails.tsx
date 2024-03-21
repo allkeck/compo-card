@@ -1,4 +1,4 @@
-import { Count } from '../count/Count';
+import { FullBoxPrice } from '../full-box-price/FullBoxPrice';
 import { Price } from '../price/Price';
 import { ProductAvailability } from '../product-availability/ProductAvailability';
 import { UserActions } from '../user-actions/UserActions';
@@ -11,7 +11,7 @@ export const ProductDetails = () => {
       <div className={styles['product-actions']}>
         <div className={styles['price-count__wrapper']}>
           <Price />
-          <Count />
+          <FullBoxPrice />
         </div>
 
         <div className={styles['horizontal-divider']}></div>

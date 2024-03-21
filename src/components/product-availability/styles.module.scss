@@ -1,0 +1,29 @@
+@import '../../sass/variables';
+
+.product-availability {
+  &__wrapper {
+    display: flex;
+    column-gap: $design-step-double;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    row-gap: $design-step-small;
+    width: 100%;
+
+    .item-value {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 16px;
+      color: $main-black;
+    }
+
+    .item-type {
+      font-size: 12px;
+      font-weight: 350;
+      line-height: 16px;
+      color: $dark-gray;
+    }
+  }
+}

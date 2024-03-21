@@ -1,0 +1,54 @@
+@import '../../sass/variables';
+
+.adding-button {
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 12px;
+    width: 100%;
+    border: 2px solid $blue;
+    border-radius: $design-step;
+    background-color: transparent;
+    box-shadow: 0 0 6px $button-gray-shadow;
+
+    .count-button {
+      padding: 0;
+      width: 24px;
+      height: 24px;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+
+      &::before {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+      }
+
+      &:active::before {
+        transform: scale(0.9);
+      }
+    }
+
+    .increase-button {
+      &::before {
+        content: url('/icons/increase.svg');
+      }
+    }
+
+    .decrease-button {
+      &::before {
+        content: url('/icons/decrease.svg');
+      }
+    }
+
+    .count-value {
+      width: 184px;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 24px;
+      text-align: center;
+    }
+  }
+}

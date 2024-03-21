@@ -1,0 +1,31 @@
+@import '../../sass/variables';
+
+.primary-button {
+  width: 100%;
+  padding-top: 23px;
+  padding-bottom: 23px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 10px;
+  background-color: $blue;
+  color: $white;
+  border: none;
+  border-radius: $design-step;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $blue-hover;
+    box-shadow: 0px 12px 16px -7px rgba($blue-hover-shadow, 0.44);
+  }
+
+  &:focus {
+    background-color: $blue;
+    box-shadow: none;
+  }
+
+  &:disabled {
+    background-color: $disable-gray-bg;
+    color: $disable-gray-color;
+    pointer-events: none;
+  }
+}

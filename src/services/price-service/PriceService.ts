@@ -1,5 +1,3 @@
-import CountService from '../count-service/CountService';
-
 export interface IDiscountInfo {
   hasDiscount: boolean;
   discountAmount?: number; // TODO: assert less than < 1 and set require if hasDiscount true
@@ -8,7 +6,6 @@ export interface IDiscountInfo {
 interface IPriceServiceProps {
   basePrice: number;
   discountInfo: IDiscountInfo;
-  count: number;
 }
 
 const basePriceData: IPriceServiceProps = {
@@ -17,54 +14,41 @@ const basePriceData: IPriceServiceProps = {
     hasDiscount: true,
     discountAmount: 0.15,
   },
-  count: CountService.getCount(),
 };
 
 class PriceService {
   readonly price: number;
+  readonly fullBoxCount: number = 12;
 
-  private currentPrice: number;
   private discountAmount?: number;
 
   hasDiscount: boolean;
 
   constructor(basePrice: number, discountInfo: IDiscountInfo) {
     this.price = basePrice;
-    this.currentPrice = this.price;
     this.hasDiscount = discountInfo.hasDiscount;
 
     if (this.hasDiscount) {
       this.discountAmount = discountInfo.discountAmount;
     }
-
-    this.setCurrentPrice(basePrice, discountInfo);
   }
 
-  // TODO: fix vicheslenii s kuchei cifr posle tochki
-  setCurrentPrice(price: number, discountInfo: IDiscountInfo) {
-    this.hasDiscount = discountInfo.hasDiscount;
-    this.discountAmount = discountInfo.discountAmount;
+  getPrice(isFullBox: boolean, isDiscount: boolean) {
+    let price = this.price;
 
-    if (discountInfo.hasDiscount && discountInfo.discountAmount) {
-      this.currentPrice = price * (1 - discountInfo.discountAmount);
-    } else if (this.hasDiscount && this.discountAmount) {
-      this.currentPrice = price * (1 - this.discountAmount);
-    } else {
-      this.currentPrice = price;
+    if (isDiscount && this.hasDiscount && this.discountAmount) {
+      // TODO: fix float calculations
+      price = price * (1 - this.discountAmount);
     }
 
-    return this;
+    if (isFullBox) {
+      price = price * this.fullBoxCount;
+    }
+
+    return price;
   }
 
-  getCurrentPrice() {
-    return this.currentPrice * CountService.getCount();
-  }
-
-  getFullPrice() {
-    return this.price * CountService.getCount();
-  }
-
-  modifyDiscountAmount() {
+  convertDiscountAmount() {
     if (this.hasDiscount && this.discountAmount) {
       return this.discountAmount * 100;
     }

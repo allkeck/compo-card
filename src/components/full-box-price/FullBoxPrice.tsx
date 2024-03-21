@@ -1,19 +1,19 @@
 import { useContext, useState } from 'react';
 
-import { CountContext } from '@/context/CountContext';
-import CountService from '@/services/count-service/CountService';
+import { FullBoxContext } from '@/context/FullBoxProvider';
 
-import styles from './styles.module.scss';
 import { Hug } from '../hug/Hug';
 
-export const Count = () => {
+import styles from './styles.module.scss';
+
+export const FullBoxPrice = () => {
   const [isFullBox, setIsFullBox] = useState(false);
 
-  const { setCount } = useContext(CountContext);
+  const { setIsFullBoxStatus } = useContext(FullBoxContext);
 
   const setFullBoxHandler = () => {
     setIsFullBox((prev) => {
-      prev ? setCount(CountService.setCount(1).getCount()) : setCount(CountService.setFullBoxCount().getCount());
+      setIsFullBoxStatus(!prev);
 
       return !prev;
     });

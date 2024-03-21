@@ -1,0 +1,9 @@
+@import '../../sass/variables';
+
+.user-actions {
+  &__wrapper {
+    display: flex;
+    column-gap: $design-step-double;
+    height: 56px;
+  }
+}

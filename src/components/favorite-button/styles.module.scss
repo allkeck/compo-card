@@ -1,0 +1,22 @@
+@import '../../sass/variables';
+
+.favorite-button {
+  width: 72px;
+  height: 56px;
+  padding: $design-step-double $design-step-tall;
+  border: none;
+  border-radius: $design-step;
+  background-color: $button-gray;
+  cursor: pointer;
+
+  &::before {
+    content: url('/icons/heart.svg');
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+  }
+
+  &.favorite::before {
+    content: url('/icons/heart-filled.svg');
+  }
+}

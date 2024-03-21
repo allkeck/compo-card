@@ -1,10 +1,8 @@
 class CountService {
-  private count: number = 1;
+  private count: number;
 
-  constructor(count?: number) {
-    if (count) {
-      this.count = count;
-    }
+  constructor(count: number) {
+    this.count = count;
   }
 
   setCount(newCount: number) {
@@ -13,15 +11,21 @@ class CountService {
     return this;
   }
 
-  setFullBoxCount() {
-    this.count = 12;
+  getCount() {
+    return this.count;
+  }
+
+  increaseCount() {
+    this.count += 1;
 
     return this;
   }
 
-  getCount() {
-    return this.count;
+  decreaseCount() {
+    this.count -= 1;
+
+    return this;
   }
 }
 
-export default new CountService();
+export default new CountService(0);

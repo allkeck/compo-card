@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { CountContextProvider } from './context/CountContext';
+import { FullBoxProvider } from './context/FullBoxProvider';
 
 import { CardItem } from '@/components/sections/card-item/CardItem';
 
@@ -10,8 +10,8 @@ import './css/base.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <CountContextProvider>
+    <FullBoxProvider>
       <CardItem />
-    </CountContextProvider>
+    </FullBoxProvider>
   </React.StrictMode>
 );
