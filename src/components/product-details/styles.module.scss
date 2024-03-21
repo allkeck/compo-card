@@ -1,0 +1,26 @@
+@import '../../sass/_variables';
+
+.product-details {
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 372px 1px 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: $design-step-grand;
+    padding-top: $design-step-tall;
+
+    .vertical-divider {
+      background-color: $gray;
+    }
+  }
+
+  &__description {
+    grid-column: 1 / 4;
+
+    p {
+      margin-top: $design-step-tall;
+      font-family: 'Gotham-Book', sans-serif;
+      font-size: 18px;
+      line-height: 28px;
+    }
+  }
+}

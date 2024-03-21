@@ -1,0 +1,24 @@
+@import '../../sass/_variables';
+
+.price-wrapper {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: max-content auto;
+  gap: $design-step-tall $design-step-double;
+
+  .full-price {
+    grid-column: 1 / 3;
+    font-family: 'Gotham-Medium', sans-serif;
+    font-size: 14px;
+    line-height: 16px;
+    color: $red;
+  }
+
+  .currency {
+    font-size: 32px;
+  }
+
+  .price {
+    font-size: 32px;
+  }
+}

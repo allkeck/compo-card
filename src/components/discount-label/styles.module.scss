@@ -1,0 +1,13 @@
+@import '../../sass/_variables';
+
+.discount-label {
+  justify-self: self-start;
+  align-self: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: 'Gotham-Bold', sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  color: $white;
+  background-color: $red;
+}
