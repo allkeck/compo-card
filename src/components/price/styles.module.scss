@@ -1,10 +1,11 @@
 @import '../../sass/_variables';
 
 .price-wrapper {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-template-rows: max-content auto;
-  gap: $design-step-tall $design-step-double;
+  &.grid {
+    display: grid;
+    grid-auto-columns: max-content;
+    gap: $design-step-tall $design-step-double;
+  }
 
   .full-price {
     grid-column: 1 / 3;

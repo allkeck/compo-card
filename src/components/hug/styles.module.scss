@@ -1,0 +1,32 @@
+@import '../../sass/variables';
+
+.hug {
+  &-container {
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+    position: relative;
+    border-radius: $design-step-big;
+    background-color: $dark-gray;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      transform: translate(-8px, 2px);
+      border-radius: 50%;
+      background-color: $white;
+      will-change: transform;
+      transition: transform 0.25s ease-out;
+    }
+
+    &.full-box__active {
+      background-color: $blue;
+
+      &::before {
+        transform: translate(8px, 2px);
+      }
+    }
+  }
+}

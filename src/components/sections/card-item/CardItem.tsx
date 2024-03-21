@@ -1,8 +1,8 @@
-import { Layout } from '@layout/Layout';
+import { Layout } from '@/components/layout/Layout';
 
 import ProductSliderService from '@/services/product-slider-service/ProductSliderService';
 
-import { Container } from '@/layout/container/Container';
+import { Container } from '@/components/layout/container/Container';
 import { ProductSlider } from '@/components/product-slider/ProductSlider';
 import { ProductDetails } from '@/components/product-details/ProductDetails';
 

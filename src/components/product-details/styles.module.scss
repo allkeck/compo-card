@@ -11,6 +11,22 @@
     .vertical-divider {
       background-color: $gray;
     }
+
+    .product-actions {
+      display: grid;
+      grid-template-rows: auto 1px auto auto;
+      row-gap: $design-step-big;
+
+      .price-count__wrapper {
+        display: flex;
+        flex-direction: column;
+        row-gap: $design-step-big;
+      }
+
+      .horizontal-divider {
+        background-color: $gray;
+      }
+    }
   }
 
   &__description {

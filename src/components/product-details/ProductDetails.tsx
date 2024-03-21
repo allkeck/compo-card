@@ -1,15 +1,27 @@
 import { Count } from '../count/Count';
 import { Price } from '../price/Price';
+import { ProductAvailability } from '../product-availability/ProductAvailability';
+import { UserActions } from '../user-actions/UserActions';
+
 import styles from './styles.module.scss';
 
 export const ProductDetails = () => {
   return (
     <div className={styles['product-details__wrapper']}>
-      <div>
-        <Price />
-        <Count />
+      <div className={styles['product-actions']}>
+        <div className={styles['price-count__wrapper']}>
+          <Price />
+          <Count />
+        </div>
+
+        <div className={styles['horizontal-divider']}></div>
+
+        <ProductAvailability />
+        <UserActions />
       </div>
+
       <div className={styles['vertical-divider']}></div>
+
       <div>
         <h3>Характеристики</h3>
       </div>
