@@ -1,5 +1,9 @@
-import type { IDiscountInfo, IPriceService } from './interface';
 import CountService from '../count-service/CountService';
+
+export interface IDiscountInfo {
+  hasDiscount: boolean;
+  discountAmount?: number; // TODO: assert less than < 1 and set require if hasDiscount true
+}
 
 interface IPriceServiceProps {
   basePrice: number;
@@ -16,7 +20,7 @@ const basePriceData: IPriceServiceProps = {
   count: CountService.getCount(),
 };
 
-class PriceService implements IPriceService {
+class PriceService {
   readonly price: number;
 
   private currentPrice: number;

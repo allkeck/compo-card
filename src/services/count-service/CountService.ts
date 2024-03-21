@@ -1,6 +1,4 @@
-import type { ICountService } from './interface';
-
-class CountService implements ICountService {
+class CountService {
   private count: number = 1;
 
   constructor(count?: number) {

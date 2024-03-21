@@ -1,4 +1,7 @@
-import { IProductSliderItem, IProductSliderService } from './interface';
+export interface IProductSliderItem {
+  id: number;
+  imageSrc: string;
+}
 
 const productSliderData: IProductSliderItem[] = [
   {
@@ -23,7 +26,7 @@ const productSliderData: IProductSliderItem[] = [
   },
 ];
 
-class ProductSliderService implements IProductSliderService {
+class ProductSliderService {
   private sliders: IProductSliderItem[];
 
   constructor(data: IProductSliderItem[]) {
