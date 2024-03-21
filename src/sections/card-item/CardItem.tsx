@@ -1,11 +1,12 @@
 import { Layout } from '@layout/Layout';
 
+import ProductSliderService from '@/services/product-slider-service/ProductSliderService';
+
 import { Container } from '@/layout/container/Container';
 import { ProductSlider } from '@/components/product-slider/ProductSlider';
 import { ProductDetails } from '@/components/product-details/ProductDetails';
 
 import styles from './styles.module.scss';
-import ProductSliderService from '@/services/product-slider-service/ProductSliderService';
 
 export const CardItem = () => {
   return (

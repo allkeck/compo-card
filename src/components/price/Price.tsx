@@ -26,7 +26,7 @@ export const Price = () => {
 
   return (
     <div className={styles['price-wrapper']}>
-      {hasDiscount && <span className={styles['full-price']}>{fullPrice} цена без скидки</span>}
+      {hasDiscount && <span className={styles['full-price']}>{`${fullPrice} цена без скидки`}</span>}
 
       <strong className={styles.price}>{price}</strong>
 
