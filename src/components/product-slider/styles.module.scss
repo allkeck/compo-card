@@ -1,3 +1,62 @@
+@import '../../sass/variables';
+
+.main-slider {
+  border-radius: $design-step-tall;
+}
+
+.thumbs-slider {
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    height: 64px;
+    margin-top: $design-step-tall;
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 34px;
+      height: 64px;
+      padding: 0;
+      border: none;
+      border-radius: $design-step;
+      background-color: $button-gray;
+      cursor: pointer;
+    }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+      width: 32px;
+      height: 32px;
+    }
+
+    .swiper-button-next {
+      &::after {
+        content: url('/icons/next.svg');
+      }
+    }
+
+    .swiper-button-prev {
+      &::after {
+        content: url('/icons/prev.svg');
+      }
+    }
+  }
+
+  &__content {
+    width: 292px;
+
+    .slider-item {
+      width: 64px;
+
+      img {
+        border-radius: $design-step-double;
+      }
+    }
+  }
+}
+
 .slider-item {
   img {
     width: 100%;

@@ -22,7 +22,7 @@ export const MockData: IProductDataSource = {
         ['Код производителя', 'ELC0200000696'],
       ]),
       productAvailability: {
-        nearestDeliveryDate: new Date('2024-03-23'),
+        nearestDeliveryDate: new Date('2024-03-27'),
         pickUpPoints: [
           {
             id: 1,
@@ -42,6 +42,28 @@ export const MockData: IProductDataSource = {
         Отсюда естественно следует, что коммуникация уравновешивает косвенный фактор коммуникации. Поле направлений естественно допускает
         экспериментальный скачок функции, таким образом сбылась мечта идиота&nbsp;&mdash; утверждение полностью доказано. Арифметическая прогрессия
         притягивает линейно зависимый пул лояльных изданий.`,
+      productSliderItems: [
+        {
+          id: 1,
+          imageSrc: '/images/products/1.jpg',
+        },
+        {
+          id: 2,
+          imageSrc: '/images/products/2.jpg',
+        },
+        {
+          id: 3,
+          imageSrc: '/images/products/3.jpg',
+        },
+        {
+          id: 4,
+          imageSrc: '/images/products/4.jpg',
+        },
+        {
+          id: 5,
+          imageSrc: '/images/products/5.jpg',
+        },
+      ],
     };
   },
 };

@@ -11,6 +11,7 @@
   grid-template-columns: 400px 1fr;
   row-gap: $design-step-big;
   column-gap: $design-step-grand;
+  border-bottom: 1px solid $gray;
 }
 
 .section-header {

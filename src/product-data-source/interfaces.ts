@@ -22,11 +22,16 @@ interface IProductAvailability {
   pickUpPoints: IPickPoint[];
 }
 
+interface IProductSliderItem {
+  id: number;
+  imageSrc: string;
+}
+
 export type TProductInfo = {
   id: number;
   price: IPrice;
   isFavorite: boolean;
-  // galleryURLs: string[];
+  productSliderItems: IProductSliderItem[];
   productAvailability: IProductAvailability;
   features: Map<string, string>;
   descriptionText: string;
