@@ -2,23 +2,32 @@ export interface IProductDataSource {
   getProductInfo(id: number): TProductInfo;
 }
 
-export interface IPickPointInfo {
+interface IDiscount {
+  hasDiscount: boolean;
+  discountAmount?: number; // TODO: assert less than < 1 and set require if hasDiscount true
+}
+
+interface IPrice {
+  basePrice: number;
+  discount: IDiscount;
+}
+interface IPickPoint {
   id: number;
   name: string;
   availableProductCount: number;
 }
 
-export interface IProductAvailabilityInfo {
+interface IProductAvailability {
   nearestDeliveryDate: Date;
-  pickUpPoints: IPickPointInfo[];
+  pickUpPoints: IPickPoint[];
 }
 
 export type TProductInfo = {
   id: number;
-  price: number;
+  price: IPrice;
   isFavorite: boolean;
   // galleryURLs: string[];
-  productAvailability: IProductAvailabilityInfo;
+  productAvailability: IProductAvailability;
   features: Map<string, string>;
   descriptionText: string;
 };

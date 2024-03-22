@@ -4,7 +4,13 @@ export const MockData: IProductDataSource = {
   getProductInfo: (id) => {
     return {
       id: id,
-      price: 14000,
+      price: {
+        basePrice: 14000,
+        discount: {
+          hasDiscount: true,
+          discountAmount: 0.15,
+        },
+      },
       isFavorite: false,
       features: new Map([
         ['Код поставщика', 'ELC00696'],

@@ -1,6 +1,8 @@
+import { TProductInfo } from '@/product-data-source/interfaces';
+
 import styles from './styles.module.scss';
 
-export const Description = ({ descriptionText }: { descriptionText: string }) => {
+export const Description = ({ descriptionText }: Pick<TProductInfo, 'descriptionText'>) => {
   return (
     <div className={styles['description__wrapper']}>
       <h2>Описание товара</h2>

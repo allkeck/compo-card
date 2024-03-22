@@ -1,6 +1,7 @@
 import { Layout } from '@/components/layout/Layout';
 
 import ProductSliderService from '@/services/product-slider-service/ProductSliderService';
+import { MockData } from '@/product-data-source/MockData';
 
 import { Container } from '@/components/layout/container/Container';
 import { ProductSlider } from '@/components/product-slider/ProductSlider';
@@ -9,6 +10,8 @@ import { ProductDetails } from '@/components/product-details/ProductDetails';
 import styles from './styles.module.scss';
 
 export const CardItem = () => {
+  const productData = MockData.getProductInfo(1);
+
   return (
     <Layout>
       <section className={styles['section-product']}>
@@ -18,7 +21,7 @@ export const CardItem = () => {
 
             <ProductSlider slidersData={ProductSliderService.getSliders()} />
 
-            <ProductDetails />
+            <ProductDetails {...productData} />
           </div>
         </Container>
       </section>

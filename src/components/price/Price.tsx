@@ -1,26 +1,28 @@
 import { useContext, useEffect, useState } from 'react';
 
+import { TProductInfo } from '@/product-data-source/interfaces';
+
 import { FullBoxContext } from '@/context/FullBoxProvider';
-import PriceService from '@/services/price-service/PriceService';
+import { PriceService } from '@/services/price-service/PriceService';
 
 import { DiscountLabel } from '../discount-label/DiscountLabel';
 
 import styles from './styles.module.scss';
 
-export const Price = () => {
+export const Price = ({ price }: Pick<TProductInfo, 'price'>) => {
   const [discointPrice, setDiscountPrice] = useState<string>();
   const [fullPrice, setFullPrice] = useState<string>();
 
   const { isFullBox } = useContext(FullBoxContext);
 
-  const hasDiscount = PriceService.hasDiscount;
+  const hasDiscount = price.discount.hasDiscount;
 
   useEffect(() => {
     setDiscountPrice(
-      PriceService.getPrice(isFullBox, true).toLocaleString('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 0 })
+      PriceService.getPrice(price, isFullBox, true).toLocaleString('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 0 })
     );
     setFullPrice(
-      PriceService.getPrice(isFullBox, false).toLocaleString('ru-RU', {
+      PriceService.getPrice(price, isFullBox, false).toLocaleString('ru-RU', {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
       })
@@ -33,7 +35,7 @@ export const Price = () => {
 
       <strong className={styles.price}>{discointPrice}</strong>
 
-      {hasDiscount && <DiscountLabel discountAmount={PriceService.convertDiscountAmount()} />}
+      {hasDiscount && <DiscountLabel discountAmount={PriceService.convertDiscountAmount(price.discount)} />}
     </div>
   );
 };

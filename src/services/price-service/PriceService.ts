@@ -1,45 +1,14 @@
+import { TProductInfo } from '@/product-data-source/interfaces';
 import { projectSettings } from '@/settings';
 
-interface IDiscountInfo {
-  hasDiscount: boolean;
-  discountAmount?: number; // TODO: assert less than < 1 and set require if hasDiscount true
-}
+export const PriceService = {
+  getPrice: (priceData: TProductInfo['price'], isFullBox: boolean, isDiscount: boolean) => {
+    const discount = priceData.discount;
+    let price = priceData.basePrice;
 
-interface IPriceServiceProps {
-  basePrice: number;
-  discountInfo: IDiscountInfo;
-}
-
-const basePriceData: IPriceServiceProps = {
-  basePrice: 14000,
-  discountInfo: {
-    hasDiscount: true,
-    discountAmount: 0.15,
-  },
-};
-
-class PriceService {
-  readonly price: number;
-
-  private discountAmount?: number;
-
-  hasDiscount: boolean;
-
-  constructor(basePrice: number, discountInfo: IDiscountInfo) {
-    this.price = basePrice;
-    this.hasDiscount = discountInfo.hasDiscount;
-
-    if (this.hasDiscount) {
-      this.discountAmount = discountInfo.discountAmount;
-    }
-  }
-
-  getPrice(isFullBox: boolean, isDiscount: boolean) {
-    let price = this.price;
-
-    if (isDiscount && this.hasDiscount && this.discountAmount) {
+    if (isDiscount && discount.hasDiscount && discount.discountAmount) {
       // TODO: fix float calculations
-      price = price * (1 - this.discountAmount);
+      price = price * (1 - discount.discountAmount);
     }
 
     if (isFullBox) {
@@ -47,15 +16,13 @@ class PriceService {
     }
 
     return price;
-  }
+  },
 
-  convertDiscountAmount() {
-    if (this.hasDiscount && this.discountAmount) {
-      return this.discountAmount * 100;
+  convertDiscountAmount: (discount: TProductInfo['price']['discount']) => {
+    if (discount.hasDiscount && discount.discountAmount) {
+      return discount.discountAmount * 100;
     }
 
     return 0;
-  }
-}
-
-export default new PriceService(basePriceData.basePrice, basePriceData.discountInfo);
+  },
+};

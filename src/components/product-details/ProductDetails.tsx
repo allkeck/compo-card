@@ -5,27 +5,25 @@ import { UserActions } from '../user-actions/UserActions';
 import { Features } from '../features/Features';
 import { Description } from '../description/Description';
 
+import { TProductInfo } from '@/product-data-source/interfaces';
 import { ProductAvailabilityService } from '@/services/product-availability-service/ProductAvailabilityService';
-import { MockData } from '@/product-data-source/MockData';
 
 import styles from './styles.module.scss';
 
-export const ProductDetails = () => {
-  const { features, isFavorite, productAvailability, descriptionText } = MockData.getProductInfo(1);
-  const deliveryDay = ProductAvailabilityService.convertDeliveryDate(productAvailability.nearestDeliveryDate);
+export const ProductDetails = ({ features, isFavorite, productAvailability, descriptionText, price }: Omit<TProductInfo, 'id'>) => {
   const availableProductCount = ProductAvailabilityService.getAvailableProductCount(productAvailability.pickUpPoints);
 
   return (
     <div className={styles['product-details__wrapper']}>
       <div className={styles['product-actions']}>
         <div className={styles['price-count__wrapper']}>
-          <Price />
+          <Price price={price} />
           <FullBoxPrice />
         </div>
 
         <div className={styles['horizontal-divider']}></div>
 
-        <ProductAvailability nearestDeliveryDay={deliveryDay} pickUpPoints={productAvailability.pickUpPoints} />
+        <ProductAvailability productAvailability={productAvailability} />
         <UserActions isFavorite={isFavorite} maxProductCount={availableProductCount} />
       </div>
 
