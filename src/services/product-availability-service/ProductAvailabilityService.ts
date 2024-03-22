@@ -4,6 +4,12 @@ import { isTomorrow } from '@/shared/isTomorrow';
 
 export const ProductAvailabilityService = {
   convertDeliveryDate: (date: Date): string => {
+    const now = new Date();
+
+    if (new Date(date) < now) {
+      return 'Недоступна';
+    }
+
     if (isTomorrow(date)) {
       return 'Завтра';
     }
