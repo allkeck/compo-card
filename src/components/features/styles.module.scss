@@ -32,6 +32,10 @@
         line-height: 16px;
         color: $dark-gray;
       }
+
+      &:last-child:nth-child(odd) {
+        grid-column: span 2;
+      }
     }
   }
 }
