@@ -12,6 +12,7 @@ export const BasketButton = ({ maxProductCount }: { maxProductCount: number }) =
   const [isMaxCount, setIsMaxCount] = useState(false);
   const [countErrorMessage, setCountErrorMessage] = useState('');
   const [productsCount, setProductsCount] = useState<number>(0);
+  const [isToastVisible, setToastVisible] = useState(false);
 
   const { isFullBox } = useContext(FullBoxContext);
 
@@ -25,6 +26,8 @@ export const BasketButton = ({ maxProductCount }: { maxProductCount: number }) =
       const newCount = isFullBox ? (prevCount += 12) : (prevCount += 1);
 
       if (newCount > maxProductCount) {
+        setToastVisible(true);
+
         return maxProductCount;
       }
 
@@ -62,6 +65,8 @@ export const BasketButton = ({ maxProductCount }: { maxProductCount: number }) =
           productsCount={productsCount}
           isMaxCount={isMaxCount}
           countErrorMessage={countErrorMessage}
+          isToastVisible={isToastVisible}
+          toastClose={() => setToastVisible(false)}
         />
       ) : (
         <PrimaryButton onClickAction={handleClick} isDisabled={maxProductCount === 0}>
