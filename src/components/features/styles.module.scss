@@ -9,7 +9,6 @@
   &__list {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-auto-rows: max-content;
     gap: $design-step-tall $design-step-big;
     margin-top: $design-step-big;
     padding: 0;

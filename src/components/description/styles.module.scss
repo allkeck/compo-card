@@ -1,0 +1,12 @@
+@import '../../sass/variables';
+
+.description__wrapper {
+  grid-column: span 3;
+
+  p {
+    margin-top: $design-step-tall;
+    font-weight: 350;
+    font-size: 18px;
+    line-height: 28px;
+  }
+}

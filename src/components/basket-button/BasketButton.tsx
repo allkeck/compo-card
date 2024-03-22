@@ -64,7 +64,7 @@ export const BasketButton = ({ maxProductCount }: { maxProductCount: number }) =
           countErrorMessage={countErrorMessage}
         />
       ) : (
-        <PrimaryButton onClickAction={handleClick}>
+        <PrimaryButton onClickAction={handleClick} isDisabled={maxProductCount === 0}>
           <span className={styles['basket-button__text']}>В&nbsp;корзину</span>
         </PrimaryButton>
       )}

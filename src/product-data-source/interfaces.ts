@@ -20,4 +20,5 @@ export type TProductInfo = {
   // galleryURLs: string[];
   productAvailability: IProductAvailabilityInfo;
   features: Map<string, string>;
+  descriptionText: string;
 };
