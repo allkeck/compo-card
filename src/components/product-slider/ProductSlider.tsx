@@ -1,8 +1,9 @@
-import type { IProductSliderItem } from '@/types/types';
 import { useState } from 'react';
 import { Navigation, Thumbs } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore from 'swiper';
+
+import type { IProductSliderItem } from '@/services/product-slider-service/ProductSliderService';
 
 import 'swiper/css';
 import 'swiper/css/navigation';

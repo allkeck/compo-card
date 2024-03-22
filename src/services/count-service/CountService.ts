@@ -1,3 +1,5 @@
+import { projectSettings } from '@/settings';
+
 class CountService {
   private count: number;
 
@@ -15,14 +17,14 @@ class CountService {
     return this.count;
   }
 
-  increaseCount() {
-    this.count += 1;
+  increaseCount(fullBoxCount?: boolean) {
+    this.count += fullBoxCount ? projectSettings.fullBoxCount : 1;
 
     return this;
   }
 
-  decreaseCount() {
-    this.count -= 1;
+  decreaseCount(fullBoxCount?: boolean) {
+    this.count -= fullBoxCount ? projectSettings.fullBoxCount : 1;
 
     return this;
   }

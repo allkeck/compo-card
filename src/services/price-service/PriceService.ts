@@ -1,3 +1,5 @@
+import { projectSettings } from '@/settings';
+
 export interface IDiscountInfo {
   hasDiscount: boolean;
   discountAmount?: number; // TODO: assert less than < 1 and set require if hasDiscount true
@@ -18,7 +20,6 @@ const basePriceData: IPriceServiceProps = {
 
 class PriceService {
   readonly price: number;
-  readonly fullBoxCount: number = 12;
 
   private discountAmount?: number;
 
@@ -42,7 +43,7 @@ class PriceService {
     }
 
     if (isFullBox) {
-      price = price * this.fullBoxCount;
+      price = price * projectSettings.fullBoxCount;
     }
 
     return price;
