@@ -1,6 +1,6 @@
 import { projectSettings } from '@/settings';
 
-export interface IDiscountInfo {
+interface IDiscountInfo {
   hasDiscount: boolean;
   discountAmount?: number; // TODO: assert less than < 1 and set require if hasDiscount true
 }

@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
 
-import CountService from '@/services/count-service/CountService';
 import { FullBoxContext } from '@/context/FullBoxProvider';
 
 import { PrimaryButton } from '../primary-button/PrimaryButton';
@@ -8,36 +7,62 @@ import { CountButton } from '../count-button/CountButton';
 
 import styles from './styles.module.scss';
 
-export const BasketButton = () => {
+export const BasketButton = ({ maxProductCount }: { maxProductCount: number }) => {
   const [isAddingProduct, setIsAddingProduct] = useState(false);
+  const [isMaxCount, setIsMaxCount] = useState(false);
+  const [countErrorMessage, setCountErrorMessage] = useState('');
   const [productsCount, setProductsCount] = useState<number>(0);
 
   const { isFullBox } = useContext(FullBoxContext);
 
   const handleClick = () => {
-    setProductsCount(CountService.increaseCount(isFullBox).getCount());
     setIsAddingProduct(true);
+    setProductsCount(isFullBox ? 12 : 1);
   };
 
   const increaseProductCount = () => {
-    setProductsCount(CountService.increaseCount(isFullBox).getCount());
+    setProductsCount((prevCount) => {
+      const newCount = isFullBox ? (prevCount += 12) : (prevCount += 1);
+
+      if (newCount > maxProductCount) {
+        return maxProductCount;
+      }
+
+      return newCount;
+    });
   };
 
   const decreaseProductCount = () => {
-    setProductsCount(CountService.decreaseCount(isFullBox).getCount());
+    setProductsCount((prevCount) => {
+      return isFullBox ? (prevCount -= 12) : (prevCount -= 1);
+    });
   };
 
   useEffect(() => {
     if (productsCount < 1) {
       setIsAddingProduct(false);
-      setProductsCount(CountService.setCount(0).getCount());
+      setProductsCount(0);
+    }
+
+    if (productsCount === maxProductCount) {
+      setIsMaxCount(true);
+      setCountErrorMessage('Добавлено максимальное количество');
+    } else {
+      setIsMaxCount(false);
+      setCountErrorMessage('');
     }
   }, [productsCount]);
 
   return (
     <>
       {isAddingProduct ? (
-        <CountButton increaseAction={increaseProductCount} decreaseAction={decreaseProductCount} productsCount={productsCount} />
+        <CountButton
+          increaseAction={increaseProductCount}
+          decreaseAction={decreaseProductCount}
+          productsCount={productsCount}
+          isMaxCount={isMaxCount}
+          countErrorMessage={countErrorMessage}
+        />
       ) : (
         <PrimaryButton onClickAction={handleClick}>
           <span className={styles['basket-button__text']}>В&nbsp;корзину</span>

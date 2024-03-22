@@ -2,10 +2,18 @@ import { FullBoxPrice } from '../full-box-price/FullBoxPrice';
 import { Price } from '../price/Price';
 import { ProductAvailability } from '../product-availability/ProductAvailability';
 import { UserActions } from '../user-actions/UserActions';
+import { Features } from '../features/Features';
+
+import { ProductAvailabilityService } from '@/services/product-availability-service/ProductAvailabilityService';
+import { MockData } from '@/product-data-source/MockData';
 
 import styles from './styles.module.scss';
 
 export const ProductDetails = () => {
+  const { features, isFavorite, productAvailability } = MockData.getProductInfo(1);
+  const deliveryDay = ProductAvailabilityService.convertDeliveryDate(productAvailability.nearestDeliveryDate);
+  const availableProductCount = ProductAvailabilityService.getAvailableProductCount(productAvailability.pickUpPoints);
+
   return (
     <div className={styles['product-details__wrapper']}>
       <div className={styles['product-actions']}>
@@ -16,15 +24,14 @@ export const ProductDetails = () => {
 
         <div className={styles['horizontal-divider']}></div>
 
-        <ProductAvailability />
-        <UserActions />
+        <ProductAvailability nearestDeliveryDay={deliveryDay} pickUpPoints={productAvailability.pickUpPoints} />
+        <UserActions isFavorite={isFavorite} maxProductCount={availableProductCount} />
       </div>
 
       <div className={styles['vertical-divider']}></div>
 
-      <div>
-        <h3>Характеристики</h3>
-      </div>
+      <Features features={features} />
+
       <div className={styles['product-details__description']}>
         <h2>Описание товара</h2>
         <p>

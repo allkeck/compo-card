@@ -1,11 +1,13 @@
-import ProductAvailabilityService from '@/services/product-availability-service/ProductAvailabilityService';
+import { TProductInfo } from '@/product-data-source/interfaces';
 
 import styles from './styles.module.scss';
 
-export const ProductAvailability = () => {
-  const nearestDeliveryDay = ProductAvailabilityService.getNearestDeliveryDate();
-  const pickUpPoints = ProductAvailabilityService.getpickUpPoints();
+interface IProductAvailabilityProps {
+  nearestDeliveryDay: string;
+  pickUpPoints: TProductInfo['productAvailability']['pickUpPoints'];
+}
 
+export const ProductAvailability = ({ nearestDeliveryDay, pickUpPoints }: IProductAvailabilityProps) => {
   return (
     <div className={styles['product-availability__wrapper']}>
       <div className={styles['product-availability__item']}>
