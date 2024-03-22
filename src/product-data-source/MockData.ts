@@ -22,7 +22,7 @@ export const MockData: IProductDataSource = {
         ['Код производителя', 'ELC0200000696'],
       ]),
       productAvailability: {
-        nearestDeliveryDate: new Date('2024-03-24'),
+        nearestDeliveryDate: new Date('2024-03-26'),
         pickUpPoints: [
           {
             id: 1,
