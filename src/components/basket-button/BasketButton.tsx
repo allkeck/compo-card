@@ -6,6 +6,8 @@ import { FullBoxContext } from '@/context/FullBoxProvider';
 import { PrimaryButton } from '../primary-button/PrimaryButton';
 import { CountButton } from '../count-button/CountButton';
 
+import styles from './styles.module.scss';
+
 export const BasketButton = () => {
   const [isAddingProduct, setIsAddingProduct] = useState(false);
   const [productsCount, setProductsCount] = useState<number>(0);
@@ -38,7 +40,7 @@ export const BasketButton = () => {
         <CountButton increaseAction={increaseProductCount} decreaseAction={decreaseProductCount} productsCount={productsCount} />
       ) : (
         <PrimaryButton onClickAction={handleClick}>
-          <span>В&nbsp;корзину</span>
+          <span className={styles['basket-button__text']}>В&nbsp;корзину</span>
         </PrimaryButton>
       )}
     </>

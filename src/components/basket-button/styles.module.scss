@@ -1,0 +1,12 @@
+@import '../../sass/variables';
+
+.basket-button__text {
+  display: inline-flex;
+  align-items: center;
+  column-gap: $design-step;
+
+  &::before {
+    content: url('/icons/shopping-cart.svg');
+    height: 24px;
+  }
+}
