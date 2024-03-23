@@ -49,7 +49,7 @@ export const BasketButton = ({ maxProductCount }: { maxProductCount: number }) =
 
     if (productsCount === maxProductCount) {
       setIsMaxCount(true);
-      setCountErrorMessage('Добавлено максимальное количество');
+      setCountErrorMessage('Добавлен весь доступный товар');
     } else {
       setIsMaxCount(false);
       setCountErrorMessage('');
